@@ -1,0 +1,57 @@
+# Basic Scanning
+# Scan single URL
+nuclei -u https://target.com
+
+# Scan multiple URLs
+nuclei -l urls.txt
+
+# Template Selection
+# Scan with specific templates
+nuclei -u https://target.com -t cves/,exposures/
+
+# Exclude templates
+nuclei -u https://target.com -exclude-templates panels/
+
+# Severity based scanning
+nuclei -u https://target.com -severity critical,high
+
+# Rate Limiting
+# Requests per second
+nuclei -u https://target.com -rate-limit 100
+
+# Bulk size
+nuclei -u https://target.com -bulk-size 25
+
+# Advanced Features
+# Automatic web crawling
+nuclei -u https://target.com -crawler
+
+# Custom headers
+nuclei -u https://target.com -H "User-Agent: CustomBot"
+
+# Authentication
+nuclei -u https://target.com -auth "Bearer token"
+
+# Output formats
+nuclei -u https://target.com -o results.txt
+nuclei -u https://target.com -json -o results.json
+
+# Interactsh correlation
+nuclei -u https://target.com -interactsh-url url
+
+# Debugging
+# Debug mode
+nuclei -u https://target.com -debug
+
+# Verbose output
+nuclei -u https://target.com -v
+
+# Template Development
+# Generate template
+nuclei -u https://target.com -generate
+
+# Validate template
+nuclei -validate
+
+# Update templates
+nuclei -update-templates
