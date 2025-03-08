@@ -1,0 +1,34 @@
+# Basic directory fuzzing
+ffuf -w wordlist.txt -u http://target/FUZZ
+
+# Multiple parameters fuzzing
+ffuf -w params.txt:PARAM -w values.txt:VAL -u http://target/script.php?PARAM=VAL
+
+# Headers fuzzing
+ffuf -w wordlist.txt -u http://target -H "FUZZ: value"
+
+# POST data fuzzing
+ffuf -w wordlist.txt -X POST -d "username=admin\&password=FUZZ" -u http://target
+
+# Filter responses
+# Match size
+ffuf -w wordlist.txt -u http://target/FUZZ -fs 4242
+# Match words
+ffuf -w wordlist.txt -u http://target/FUZZ -fw 42
+# Match lines
+ffuf -w wordlist.txt -u http://target/FUZZ -fl 42
+# Match time
+ffuf -w wordlist.txt -u http://target/FUZZ -ft 2.42
+
+# Custom matching
+# Match status codes
+ffuf -w wordlist.txt -u http://target/FUZZ -mc 200,204,301,302,307,401
+# Match regular expressions
+ffuf -w wordlist.txt -u http://target/FUZZ -mr "admin"
+
+# Rate limiting
+ffuf -w wordlist.txt -u http://target/FUZZ -p 0.1
+
+# Output formats
+ffuf -w wordlist.txt -u http://target/FUZZ -o results.json
+# Supported formats: json, ejson, html, md, csv, ecsv
