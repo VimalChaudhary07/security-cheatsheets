@@ -1,0 +1,44 @@
+# To show the types of passwords that John can crack with crack speed (in cracks/second)
+john --test
+
+# To use your own word list (the Rockyou list is suggested)
+john --wordlist=[filename] [passwordfile]
+
+# To show your results after running john (shows ~/.john/john.pot)
+john --show
+
+# To restore an interrupted john session
+john --restore
+
+# To use a specific format for cracking
+john --format=<format> [passwordfile]
+
+# Common formats:
+# raw-md5, raw-sha1, raw-sha256, raw-sha512
+# mysql, mysql-sha1
+# nt, lm
+# crypt
+
+# To use rules while cracking
+john --rules --wordlist=[filename] [passwordfile]
+
+# To use mask attack
+john --mask='?l?l?l?l?l?d?d' [passwordfile]
+
+# To use incremental mode
+john --incremental [passwordfile]
+
+# To use multiple cores
+john --fork=4 [passwordfile]
+
+# To list all available formats
+john --list=formats
+
+# To show cracking status
+john --status
+
+# To create custom rules
+# Add to john.conf:
+# [List.Rules:Custom]
+# $[0-9]$[0-9]
+john --wordlist=[filename] --rules:Custom [passwordfile]
