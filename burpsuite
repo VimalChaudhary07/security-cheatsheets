@@ -1,0 +1,43 @@
+# Proxy Configuration
+# Configure browser to use proxy: 127.0.0.1:8080
+# Install Burp's CA Certificate in browser
+
+# Scoping
+# Target > Scope > Add to scope
+# Filter proxy traffic: Proxy > Options > Intercept Client Requests > And URL Is in target scope
+
+# Scanning
+# Target > Site map > Select host > Right click > Active Scan
+# Scanner > Options > Configure scan settings
+
+# Intruder Attack Types
+# Sniper: Single position, one wordlist
+# Battering ram: Multiple same positions, one wordlist
+# Pitchfork: Multiple positions, multiple wordlists
+# Cluster bomb: Multiple positions, multiple wordlists (all combinations)
+
+# Common Payloads
+# Intruder > Payloads
+# Simple list: wordlist
+# Runtime file: generated payloads
+# Custom iterator: complex patterns
+# Extension-generated: programmatic payloads
+
+# Session Handling
+# Project options > Sessions
+# Rules for managing cookies, tokens
+# Macros for automated actions
+
+# Extensions
+# Extender > BApp Store
+# Popular extensions:
+# - JWT Editor
+# - AuthMatrix
+# - Turbo Intruder
+# - Logger++
+
+# Advanced Features
+# Comparer: Compare requests/responses
+# Decoder: Encode/decode data
+# Sequencer: Analyze token randomness
+# Collaborator: Test OAST vulnerabilities
