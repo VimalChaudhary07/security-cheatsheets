@@ -1,0 +1,50 @@
+# Directory Enumeration
+# Basic directory scan
+gobuster dir -u http://target -w wordlist.txt
+
+# Advanced Options
+# With file extensions
+gobuster dir -u http://target -w wordlist.txt -x php,txt,html
+
+# With custom status codes
+gobuster dir -u http://target -w wordlist.txt -s 200,204,301,302,307,401,403
+
+# With custom threads
+gobuster dir -u http://target -w wordlist.txt -t 50
+
+# With custom timeout
+gobuster dir -u http://target -w wordlist.txt --timeout 30s
+
+# DNS Enumeration
+# Basic DNS scan
+gobuster dns -d example.com -w wordlist.txt
+
+# With specific resolver
+gobuster dns -d example.com -w wordlist.txt -r 8.8.8.8
+
+# VHOST Enumeration
+# Basic vhost scan
+gobuster vhost -u http://target -w wordlist.txt
+
+# With custom headers
+gobuster vhost -u http://target -w wordlist.txt -H 'User-Agent: CustomAgent'
+
+# Advanced Features
+# Pattern matching
+gobuster dir -u http://target -w wordlist.txt -p pattern
+
+# Custom cookies
+gobuster dir -u http://target -w wordlist.txt -c 'session=123456'
+
+# Basic auth
+gobuster dir -u http://target -w wordlist.txt -U username -P password
+
+# Output formats
+gobuster dir -u http://target -w wordlist.txt -o output.txt
+gobuster dir -u http://target -w wordlist.txt -o output.json -f json
+
+# Wildcard detection
+gobuster dir -u http://target -w wordlist.txt --wildcard
+
+# Custom User-Agent
+gobuster dir -u http://target -w wordlist.txt -a 'CustomUserAgent/1.0'
