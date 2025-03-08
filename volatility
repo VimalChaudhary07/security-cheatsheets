@@ -1,0 +1,65 @@
+# Basic Memory Analysis
+# List available plugins
+volatility -h
+
+# Get image info
+volatility -f <memory_file> imageinfo
+
+# Process listing
+volatility -f <memory_file> pslist
+volatility -f <memory_file> pstree
+volatility -f <memory_file> psxview
+
+# Network information
+volatility -f <memory_file> netscan
+volatility -f <memory_file> connections
+volatility -f <memory_file> connscan
+
+# Registry Analysis
+# Registry hives
+volatility -f <memory_file> hivelist
+# Registry keys
+volatility -f <memory_file> printkey -K "Software\Microsoft\Windows\CurrentVersion\Run"
+
+# Malware Analysis
+# Find hidden processes
+volatility -f <memory_file> psxview
+
+# Detect injected code
+volatility -f <memory_file> malfind
+
+# Dump suspicious processes
+volatility -f <memory_file> procdump -p <PID> --dump-dir ./
+
+# Extract files
+# Dump files from memory
+volatility -f <memory_file> dumpfiles --dump-dir ./
+# Extract registry
+volatility -f <memory_file> dumpregistry --dump-dir ./
+
+# Timeline Analysis
+# Create timeline
+volatility -f <memory_file> timeliner
+
+# Memory Artifacts
+# Command history
+volatility -f <memory_file> cmdscan
+volatility -f <memory_file> consoles
+
+# Password dump
+volatility -f <memory_file> hashdump
+volatility -f <memory_file> lsadump
+
+# Advanced Analysis
+# Detect rootkits
+volatility -f <memory_file> rootkit_scan
+
+# Analyze kernel modules
+volatility -f <memory_file> modules
+volatility -f <memory_file> modscan
+
+# Handle analysis
+volatility -f <memory_file> handles -p <PID>
+
+# Memory sections
+volatility -f <memory_file> memmap -p <PID>
