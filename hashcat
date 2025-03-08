@@ -1,0 +1,45 @@
+# Basic Usage
+hashcat -m <hash-type> -a <attack-mode> <hash-file> <wordlist>
+
+# Common Hash Types (-m)
+# 0: MD5
+# 100: SHA1
+# 1000: NTLM
+# 1800: sha512crypt $6$
+# 3200: bcrypt
+# 5600: NetNTLMv2
+
+# Attack Modes (-a)
+# 0: Straight (wordlist)
+# 1: Combination
+# 3: Brute-force
+# 6: Hybrid Wordlist + Mask
+# 7: Hybrid Mask + Wordlist
+
+# Mask Attack Examples
+# ?l = abcdefghijklmnopqrstuvwxyz
+# ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+# ?d = 0123456789
+# ?s = «space»!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+# ?a = ?l?u?d?s
+hashcat -a 3 -m 0 hash.txt ?l?l?l?l?l?l?l?l
+
+# Rule-based Attack
+hashcat -a 0 -m 0 hash.txt wordlist.txt -r rules/best64.rule
+
+# Show Cracked Passwords
+hashcat -m 0 hash.txt --show
+
+# Benchmark
+hashcat -b
+
+# Session Management
+# Start new session
+hashcat --session name
+# Restore session
+hashcat --session name --restore
+
+# Performance Tuning
+# Workload profile (-w)
+# 1: Low, 2: Default, 3: High, 4: Nightmare
+hashcat -w 3
